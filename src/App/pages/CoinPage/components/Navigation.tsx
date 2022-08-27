@@ -1,0 +1,31 @@
+import React from "react";
+import "./Navigation.scss";
+
+import { Link } from "react-router-dom";
+
+// @ts-ignore
+import Logo from "../../../../assets/go_back.svg";
+
+type NavigationProps = {
+  image: string;
+  title: React.ReactNode;
+  subtitle: React.ReactNode;
+};
+
+const Navigation: React.FC<NavigationProps> = ({ image, title, subtitle }) => {
+  return (
+    <div className="nav">
+      <Link to={"/"}>
+        <img src={Logo} alt="nav__back" />
+      </Link>
+
+      <div className="nav-info">
+        <img className="nav-info__ico" src={image} />
+        <div className="nav-info__name_title">{title}</div>
+        <div className="nav-info__name_subtitle">({subtitle})</div>
+      </div>
+    </div>
+  );
+};
+
+export default Navigation;

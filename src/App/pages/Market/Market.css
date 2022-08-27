@@ -1,0 +1,21 @@
+.market {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.market__info {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 25px;
+  color: #212529;
+}
+
+.market a {
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=Market.css.map */
