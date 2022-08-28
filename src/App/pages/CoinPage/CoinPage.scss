@@ -1,4 +1,8 @@
+@import "src/variables";
+
 .coin_current {
+  @include flex_center();
+  flex-direction: column;
   height: 100vh;
   background: #FFFFFF;
 }

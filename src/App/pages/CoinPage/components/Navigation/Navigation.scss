@@ -1,19 +1,18 @@
+@import "../../../../../variables";
+
 .nav {
+  @include flex_center();
   padding-top: 17px;
-  display: flex;
-  align-items: center;
 }
 
 .nav a {
-  display: flex;
-  align-items: center;
+  @include flex_center();
   padding-left: 16px;
   padding-right: 17px;
 }
 
 .nav-info {
-  display: flex;
-  align-items: center;
+  @include flex_center();
 }
 
 .nav-info__ico {
@@ -24,8 +23,6 @@
 .nav-info__name_title {
   padding-left: 8px;
   padding-right: 4px;
-  font-family: "Circular Std";
-  font-style: normal;
   font-weight: 450;
   font-size: 16px;
   line-height: 20px;
@@ -33,12 +30,8 @@
 }
 
 .nav-info__name_subtitle {
-  font-family: "Circular Std";
-  font-style: normal;
   font-weight: 450;
   font-size: 10px;
   line-height: 13px;
   color: #6C757D;
 }
-
-/*# sourceMappingURL=Navigation.css.map */

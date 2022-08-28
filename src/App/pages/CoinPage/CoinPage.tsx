@@ -4,7 +4,8 @@ import axios from "axios";
 import "./CoinPage.scss";
 import { useParams } from "react-router-dom";
 
-import Navigation from "./components";
+import CoinInfo from "./components/CoinInfo";
+import Navigation from "./components/Navigation";
 
 const CoinPage = () => {
   const [coin, setCoin] = useState<{
@@ -33,6 +34,7 @@ const CoinPage = () => {
         title={coin.name}
         subtitle={coin.symbol.toUpperCase()}
       />
+      <CoinInfo />
     </div>
   );
 };
