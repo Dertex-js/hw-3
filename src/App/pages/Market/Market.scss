@@ -1,13 +1,4 @@
-@mixin market_status {
-  font: {
-    family: 'Circular Std';
-    style: normal;
-    weight: 500;
-    size: 20px;
-  }
-  line-height: 25px;
-  color: #212529;
-}
+@import "src/variables";
 
 .market {
   display: flex;
@@ -17,7 +8,12 @@
 }
 
 .market__info {
-  @include market_status
+  font: {
+    weight: 500;
+    size: 20px;
+  }
+  line-height: 25px;
+  color: $black_1;
 }
 
 .market a {

@@ -1,21 +1,17 @@
-.market {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 1 | @import "src/variables";
+ *   |         ^^^^^^^^^^^^^^^
+ *   '
+ *   Market.scss 1:9  root stylesheet */
 
-.market__info {
-  font-family: "Circular Std";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 25px;
-  color: #212529;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @import \"src/variables\";\d\a   \2502          ^^^^^^^^^^^^^^^\a   \2575 \a   Market.scss 1:9  root stylesheet";
 }
-
-.market a {
-  text-decoration: none;
-}
-
-/*# sourceMappingURL=Market.css.map */
