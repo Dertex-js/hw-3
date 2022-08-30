@@ -15,8 +15,8 @@ type NavigationProps = {
 const Navigation: React.FC<NavigationProps> = ({ image, title, subtitle }) => {
   return (
     <div className="nav">
-      <Link to={"/"}>
-        <img src={Logo} alt="nav__back" />
+      <Link to={"/"} className="nav-link">
+        <img src={Logo} alt="nav-link__back" />
       </Link>
 
       <div className="nav-info">

@@ -1,11 +1,10 @@
+@import "src/variables";
+
 .item {
+  display: flex;
   box-sizing: border-box;
   background: #FFFFFF;
-  display: flex;
-  align-items: center;
-  margin-bottom: 5px;
-  margin-left: 20px;
-  width: 100%;
+  width: 343px;
   height: 72px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.075);
   border-radius: 8px;
@@ -20,28 +19,22 @@
   background-repeat: no-repeat;
 }
 
-.item__name {
+.item-name {
   width: 113px;
-  height: 38px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  margin-top: 18px;
 }
 
-.item__name_title {
-  font-family: 'Circular Std';
-  font-style: normal;
+.item-name__title {
   font-weight: 450;
   font-size: 16px;
   line-height: 20px;
-  color: #212529;
+  color: $black_1;
 }
 
-.item__name_subtitle {
-  font-family: 'Circular Std';
-  font-style: normal;
+.item-name__subtitle {
   font-weight: 450;
   font-size: 12px;
   line-height: 15px;
-  color: #6C757D;
+  color: $grey;
+  margin-top: 3px;
 }

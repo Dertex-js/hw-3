@@ -18,5 +18,10 @@
 
 .market a {
   text-decoration: none;
+  margin-bottom: 8px;
+}
+
+.market a:last-child {
+  margin-bottom: 0;
 }
 

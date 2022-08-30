@@ -27,7 +27,7 @@ const CoinPage = () => {
   }, [id]);
 
   return (
-    <div className="coin_current">
+    <div className="coin_page">
       <Navigation
         key={coin.id}
         image={coin.image.small}

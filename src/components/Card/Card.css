@@ -1,49 +1,17 @@
-.item {
-  box-sizing: border-box;
-  background: #FFFFFF;
-  display: flex;
-  align-items: center;
-  margin-bottom: 5px;
-  margin-left: 20px;
-  width: 100%;
-  height: 72px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.075);
-  border-radius: 8px;
-}
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 1 | @import "src/variables";
+ *   |         ^^^^^^^^^^^^^^^
+ *   '
+ *   Card.scss 1:9  root stylesheet */
 
-.item__ico {
-  width: 40px;
-  height: 40px;
-  margin: 16px;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @import \"src/variables\";\d\a   \2502          ^^^^^^^^^^^^^^^\a   \2575 \a   Card.scss 1:9  root stylesheet";
 }
-
-.item__name {
-  width: 113px;
-  height: 38px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.item__name_title {
-  font-family: "Circular Std";
-  font-style: normal;
-  font-weight: 450;
-  font-size: 16px;
-  line-height: 20px;
-  color: #212529;
-}
-
-.item__name_subtitle {
-  font-family: "Circular Std";
-  font-style: normal;
-  font-weight: 450;
-  font-size: 12px;
-  line-height: 15px;
-  color: #6C757D;
-}
-
-/*# sourceMappingURL=Card.css.map */
