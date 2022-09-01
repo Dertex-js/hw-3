@@ -1,18 +1,18 @@
-@import "../../../../../variables";
+@import "src/variables";
 
 .nav {
-  @include flex_center();
+  @include flex_center_row();
   padding-top: 17px;
 }
 
 .nav-link {
-  @include flex_center();
+  @include flex_center_row();
   padding-left: 16px;
   padding-right: 17px;
 }
 
 .nav-info {
-  @include flex_center();
+  @include flex_center_row();
 }
 
 .nav-info__ico {

@@ -1,10 +1,8 @@
 import React from "react";
 import "./Navigation.scss";
-
-import { Link } from "react-router-dom";
-
 // @ts-ignore
-import Logo from "../../../../../assets/go_back.svg";
+import Logo from "@assets/go_back.svg";
+import { Link } from "react-router-dom";
 
 type NavigationProps = {
   image: string;

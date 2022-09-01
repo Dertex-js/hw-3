@@ -1,8 +1,8 @@
 @import "src/variables";
 
 .coin_page {
-  @include flex_center();
-  flex-direction: column;
+  @include flex_center_column();
+  align-items: flex-start;
   height: 100vh;
-  background: #FFFFFF;
+  background: $white;
 }

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+
 import "./Market.scss";
 
 import Card from "@components/Card";
 import axios from "axios";
 import { Link } from "react-router-dom";
+// @ts-ignore
+import searchLogo from "src/assets/search.svg";
 
 const Market = () => {
   const [coins, setCoins] = useState<[]>([]);
@@ -29,6 +32,23 @@ const Market = () => {
   }, []);
   return (
     <div className="market">
+      <section className="title">
+        <div className="title__text">
+          <h2 className="title__info bold">
+            Market is down <span className="fall backend">- 11.17%</span>
+          </h2>
+          <p className="title__descr">In the past 24 hours</p>
+        </div>
+        <button className="title__search">
+          <img src={searchLogo} alt="search" />
+        </button>
+      </section>
+      <section className="filter">
+        <h1 className="filter__title bold">Coins</h1>
+        <div className="dropdown" role="button" tabIndex={0}>
+          Market- INR
+        </div>
+      </section>
       {coins.map((coin: any) => (
         <Link to={`/coin/${coin.id}`} key={coin.id}>
           <Card
