@@ -1,6 +1,7 @@
 import React from "react";
+
 import "./Navigation.scss";
-// @ts-ignore
+
 import Logo from "@assets/go_back.svg";
 import { Link } from "react-router-dom";
 

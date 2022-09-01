@@ -5,7 +5,6 @@ import "./Market.scss";
 import Card from "@components/Card";
 import axios from "axios";
 import { Link } from "react-router-dom";
-// @ts-ignore
 import searchLogo from "src/assets/search.svg";
 
 const Market = () => {
