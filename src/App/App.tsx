@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./App.scss";
+import { routes } from "@config/routes";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import CoinPage from "./pages/CoinPage";
@@ -11,9 +12,9 @@ const App = () => {
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Market />} />
-          <Route path="/coin">
-            <Route path=":id" element={<CoinPage />} />
+          <Route path={routes.Market} element={<Market />} />
+          <Route path={routes.CoinPage}>
+            <Route path={routes.CoinId} element={<CoinPage />} />
           </Route>
         </Routes>
       </div>

@@ -17,7 +17,7 @@ type fetchData = {
 };
 
 const Market = () => {
-  const [coins, setCoins] = useState<[]>([]);
+  const [coins, setCoins] = useState<fetchData[]>([]);
 
   useEffect(() => {
     const fetch = async () => {
