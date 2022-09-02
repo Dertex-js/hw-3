@@ -1,5 +1,6 @@
 import React from "react";
 import "./index.scss";
+import "@config/configureMobX";
 
 import ReactDOM from "react-dom/client";
 
