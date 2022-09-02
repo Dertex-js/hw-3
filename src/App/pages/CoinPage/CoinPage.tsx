@@ -27,7 +27,7 @@ const CoinPage = () => {
   }, [id]);
 
   return (
-    <div className="coin_page">
+    <div className="wrapper-coin-page">
       <Navigation
         key={coin.id}
         image={coin.image.small}
@@ -39,4 +39,4 @@ const CoinPage = () => {
   );
 };
 
-export default CoinPage;
+export default React.memo(CoinPage);

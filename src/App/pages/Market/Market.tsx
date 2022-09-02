@@ -2,10 +2,19 @@ import React, { useEffect, useState } from "react";
 
 import "./Market.scss";
 
+import dropDownIco from "@assets/dropdown-ico.svg";
+import searchLogo from "@assets/search.svg";
 import Card from "@components/Card";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import searchLogo from "src/assets/search.svg";
+
+type fetchData = {
+  id: string;
+  name: string;
+  image: string;
+  symbol: string;
+  current_price: string;
+};
 
 const Market = () => {
   const [coins, setCoins] = useState<[]>([]);
@@ -18,7 +27,7 @@ const Market = () => {
       });
 
       setCoins(
-        result.data.map((raw: any) => ({
+        result.data.map((raw: fetchData) => ({
           id: raw.id,
           name: raw.name,
           image: raw.image,
@@ -30,7 +39,7 @@ const Market = () => {
     fetch();
   }, []);
   return (
-    <div className="market">
+    <div className="wrapper-market">
       <section className="title">
         <div className="title__text">
           <h2 className="title__info bold">
@@ -46,20 +55,49 @@ const Market = () => {
         <h1 className="filter__title bold">Coins</h1>
         <div className="dropdown" role="button" tabIndex={0}>
           Market- INR
+          <img className="dropdown__ico" src={dropDownIco} alt="Drop down" />
         </div>
       </section>
-      {coins.map((coin: any) => (
-        <Link to={`/coin/${coin.id}`} key={coin.id}>
-          <Card
-            key={coin.id}
-            image={coin.image}
-            title={coin.name}
-            subtitle={coin.symbol.toUpperCase()}
-          />
-        </Link>
-      ))}
+      <nav className="categories">
+        <ul className="categories__list">
+          <li className="categories__list-item">
+            <Link to={"#"}>
+              <div className="categories__link">All</div>
+            </Link>
+          </li>
+          <li className="categories__list-item categories__list-item_active">
+            <Link to={"#"}>
+              <div className="categories__link">Gainer</div>
+            </Link>
+          </li>
+          <li className="categories__list-item">
+            <Link to={"#"}>
+              <div className="categories__link">Loser</div>
+            </Link>
+          </li>
+          <li className="categories__list-item">
+            <Link to={"#"}>
+              <div className="categories__link">Favourites</div>
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      <section className="coins">
+        <div className="coins__list">
+          {coins.map((coin: fetchData) => (
+            <Link to={`/coin/${coin.id}`}>
+              <Card
+                key={coin.id}
+                image={coin.image}
+                title={coin.name}
+                subtitle={coin.symbol.toUpperCase()}
+              />
+            </Link>
+          ))}
+        </div>
+      </section>
     </div>
   );
 };
 
-export default Market;
+export default React.memo(Market);

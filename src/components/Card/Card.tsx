@@ -18,11 +18,13 @@ const Card: React.FC<CardProps> = ({
   onClick,
 }) => {
   return (
-    <div className="item" onClick={onClick}>
-      <img className="item__ico" src={image} alt="" />
-      <div className="item-name">
-        <div className="item-name__title">{title}</div>
-        <div className="item-name__subtitle">{subtitle}</div>
+    <div className="coin" onClick={onClick}>
+      <div className="coin-name">
+        <img className="coin-name__img" src={image} alt="coin" />
+        <div className="coin-name-text">
+          <div className="coin-name-text__title">{title}</div>
+          <div className="coin-name-text__descr">{subtitle}</div>
+        </div>
       </div>
       {content}
     </div>

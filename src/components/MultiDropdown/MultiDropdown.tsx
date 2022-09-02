@@ -40,7 +40,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
     <div>
       <div
         onClick={() => {
-          if (!disabled) setIsShow((prevState) => !prevState);
+          !disabled && setIsShow((prevState) => !prevState);
         }}
       >
         {pluralizeOptions(value)}
@@ -50,4 +50,4 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
   );
 };
 
-export default MultiDropdown;
+export default React.memo(MultiDropdown);

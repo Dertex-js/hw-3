@@ -16,16 +16,16 @@ export type LoaderProps = {
 
 const Loader: React.FC<LoaderProps> = ({
   loading = true,
-  size = "m",
-  className = "",
+  size = LoaderSize.m,
+  className,
 }) => {
-  const a = classNames(`${className}`, `loader_size-${size}`);
-
-  if (loading === true) {
-    return <div className={a}>дывлаы</div>;
+  if (loading) {
+    return (
+      <div className={classNames(`${className}`, `loader_size-${size}`)}></div>
+    );
   } else {
     return null;
   }
 };
 
-export default Loader;
+export default React.memo(Loader);

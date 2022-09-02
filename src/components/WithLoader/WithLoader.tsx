@@ -15,4 +15,4 @@ const WithLoader: React.FC<WithLoaderProps> = ({ loading, children }) => {
   );
 };
 
-export default WithLoader;
+export default React.memo(WithLoader);

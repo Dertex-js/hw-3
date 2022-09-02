@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import WithLoader from "@components/WithLoader";
 import classNames from "classnames";
@@ -20,15 +20,17 @@ const Button: React.FC<ButtonProps> = ({
   children,
   ...props
 }) => {
+  const [isDisabled, setIsDisabled] = useState(props.disabled);
+
   const className: string = classNames(
     `button`,
     `button_color-${color}`,
     props.className,
-    { button_disabled: loading || props.disabled }
+    { button_disabled: loading || isDisabled }
   );
 
-  if (loading === true) {
-    props.disabled = true;
+  if (loading) {
+    setIsDisabled(true);
   }
 
   return (
@@ -39,4 +41,4 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
-export default Button;
+export default React.memo(Button);

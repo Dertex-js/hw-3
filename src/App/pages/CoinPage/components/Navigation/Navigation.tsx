@@ -14,12 +14,12 @@ type NavigationProps = {
 const Navigation: React.FC<NavigationProps> = ({ image, title, subtitle }) => {
   return (
     <div className="nav">
-      <Link to={"/"} className="nav-link">
-        <img src={Logo} alt="nav-link__back" />
+      <Link to={"/"} className="nav__link">
+        <img src={Logo} alt="nav__link_back" />
       </Link>
 
       <div className="nav-info">
-        <img className="nav-info__ico" src={image} alt="" />
+        <img className="nav-info__ico" src={image} alt="Back" />
         <div className="nav-info__name_title">{title}</div>
         <div className="nav-info__name_subtitle">({subtitle})</div>
       </div>
@@ -27,4 +27,4 @@ const Navigation: React.FC<NavigationProps> = ({ image, title, subtitle }) => {
   );
 };
 
-export default Navigation;
+export default React.memo(Navigation);

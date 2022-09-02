@@ -1,8 +1,4 @@
-@import "src/variables";
-
-.coin_page {
-  @include flex_center_column();
-  align-items: flex-start;
-  height: 100vh;
-  background: $white;
+.coin-page {
+  max-width: 375px;
+  margin: 0 auto;
 }

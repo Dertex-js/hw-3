@@ -1,0 +1,105 @@
+@import "colors";
+
+* {
+  font-family: "Circular Std", sans-serif;
+  font-weight: 400;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
+
+  &:hover {
+    color: inherit;
+  }
+}
+
+span {
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+body {
+  padding: 23px 0 33px 0;
+  color: #000;
+  background-color: $bgc-color;
+  cursor: default;
+}
+
+.fall {
+  color: $fall-color;
+}
+
+.grow {
+  color: $grow-color;
+}
+
+.wrapper-market {
+  max-width: 375px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin: 0 auto;
+}
+
+.wrapper-coin-page {
+  max-width: 375px;
+  margin: 0 auto;
+}
+
+.visible {
+  display: block !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+ul,
+ol,
+li,
+span,
+p,
+h1,
+h2,
+h3,
+h4,
+title {
+  cursor: inherit;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+button,
+a {
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+// input[type="number"]::-webkit-outer-spin-button,
+// input[type="number"]::-webkit-inner-spin-button {
+//   -webkit-appearance: none;
+// }
+
+// input[type="number"],
+// input[type="number"]:hover,
+// input[type="number"]:focus {
+//   appearance: none;
+//   -moz-appearance: textfield;
+// }

@@ -5,4 +5,4 @@ const CoinInfo = () => {
   return <div className="coin_info">Some info</div>;
 };
 
-export default CoinInfo;
+export default React.memo(CoinInfo);
