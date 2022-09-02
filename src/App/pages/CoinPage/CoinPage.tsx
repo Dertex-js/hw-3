@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+import config from "@config/config";
 import axios from "axios";
 import "./CoinPage.scss";
 import { useParams } from "react-router-dom";
@@ -16,14 +17,14 @@ const CoinPage = () => {
   }>(null);
   const { id } = useParams();
   useEffect(() => {
-    const fetch = async () => {
+    const requestCoin = async () => {
       const result = await axios({
         method: "get",
-        url: `https://api.coingecko.com/api/v3/coins/${id}`,
+        url: config.getOne(id),
       });
       setCoin(result.data);
     };
-    fetch();
+    requestCoin();
   }, [id]);
 
   return (

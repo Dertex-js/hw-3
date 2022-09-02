@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./Navigation.scss";
-
 import Logo from "@assets/go_back.svg";
+import { routes } from "@config/routes";
+import "./Navigation.scss";
 import { Link } from "react-router-dom";
 
 type NavigationProps = {
@@ -14,7 +14,7 @@ type NavigationProps = {
 const Navigation: React.FC<NavigationProps> = ({ image, title, subtitle }) => {
   return (
     <div className="nav">
-      <Link to={"/"} className="nav__link">
+      <Link to={routes.market} className="nav__link">
         <img src={Logo} alt="nav__link_back" />
       </Link>
 

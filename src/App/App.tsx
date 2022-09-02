@@ -12,9 +12,9 @@ const App = () => {
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path={routes.Market} element={<Market />} />
-          <Route path={routes.CoinPage}>
-            <Route path={routes.CoinId} element={<CoinPage />} />
+          <Route path={routes.market} element={<Market />} />
+          <Route path={routes.coinPage}>
+            <Route path={routes.coinId} element={<CoinPage />} />
           </Route>
         </Routes>
       </div>

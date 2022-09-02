@@ -5,6 +5,7 @@ import "./Market.scss";
 import dropDownIco from "@assets/dropdown-ico.svg";
 import searchLogo from "@assets/search.svg";
 import Card from "@components/Card";
+import coinsRequest from "@config/requests";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -20,11 +21,8 @@ const Market = () => {
   const [coins, setCoins] = useState<fetchData[]>([]);
 
   useEffect(() => {
-    const fetch = async () => {
-      const result = await axios({
-        method: "get",
-        url: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd",
-      });
+    const requestCoins = async () => {
+      const result = await axios(coinsRequest);
 
       setCoins(
         result.data.map((raw: fetchData) => ({
@@ -36,7 +34,7 @@ const Market = () => {
         }))
       );
     };
-    fetch();
+    requestCoins();
   }, []);
   return (
     <div className="wrapper-market">

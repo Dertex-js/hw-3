@@ -1,5 +1,5 @@
 export const routes = {
-  Market: "/",
-  CoinPage: "/coin",
-  CoinId: ":id",
+  market: "/",
+  coinPage: "/coin",
+  coinId: ":id",
 };
