@@ -1,0 +1,81 @@
+@import "src/scss/normalize";
+@import "src/scss/colors";
+
+.title {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 30px;
+  //   align-items: center;
+
+  &__info {
+    font-size: 20px;
+  }
+
+  &__descr {
+    font-size: 12px;
+    color: $secondary-grey;
+
+    margin-top: 5px;
+  }
+}
+
+.filter {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 24px;
+
+  &__title {
+    font-size: 18px;
+  }
+}
+
+.categories {
+  margin-bottom: 20px;
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    color: $secondary-grey;
+
+    max-width: 265px;
+  }
+
+  &__list-item {
+    &_active {
+      color: $active-color;
+      text-decoration: underline 3px;
+      text-underline-offset: 7px;
+    }
+  }
+}
+
+.dropdown {
+  position: relative;
+
+  padding: 5px 24px 5px 10px;
+  background-color: $white;
+
+  border-radius: 12px;
+
+  font-size: 12px;
+  color: $secondary-grey;
+
+  &__ico {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    right: 9px;
+    transform: translateY(-50%);
+
+    width: 7px;
+    height: 4px;
+  }
+}
+
+.coins__list a:not(:last-child) {
+  display: block;
+  margin-bottom: 8px;
+}
