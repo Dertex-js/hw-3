@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import CoinPage from "./pages/CoinPage";
 import Market from "./pages/Market";
+import Search from "./pages/Search";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route path={routes.coinPage}>
             <Route path={routes.coinId} element={<CoinPage />} />
           </Route>
+          <Route path={routes.search} element={<Search />} />
         </Routes>
       </div>
     </BrowserRouter>

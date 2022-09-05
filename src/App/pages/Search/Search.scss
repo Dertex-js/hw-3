@@ -1,0 +1,49 @@
+@import "src/scss/normalize";
+@import "src/scss/colors";
+
+.wrapper-search {
+  max-width: 375px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin: 0 auto;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  margin-bottom: 34px;
+
+  &__btn {
+    margin-left: 15px;
+    font-size: 12px;
+    line-height: 15px;
+    color: $price-color;
+  }
+}
+
+.search-input {
+  display: flex;
+  align-items: center;
+  width: 78.43%;
+  height: 40px;
+  background: $white;
+  border: 1px solid #DFE2E4;
+  border-radius: 4px;
+
+  &__ico {
+    margin-left: 8px;
+  }
+
+  &__input {
+    border: none;
+    outline: none;
+    margin-left: 12px;
+
+    &::placeholder {
+      font-weight: 450;
+      font-size: 12px;
+      line-height: 15px;
+      color: $mild_grey;
+    }
+  }
+}

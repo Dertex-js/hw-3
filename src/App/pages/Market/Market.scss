@@ -1,6 +1,13 @@
 @import "src/scss/normalize";
 @import "src/scss/colors";
 
+.wrapper-market {
+  max-width: 375px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin: 0 auto;
+}
+
 .title {
   display: flex;
   justify-content: space-between;

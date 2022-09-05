@@ -35,6 +35,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button {...props} className={className}>
+      Cancel
       {children}
       {loading && <WithLoader loading={loading} />}
     </button>
