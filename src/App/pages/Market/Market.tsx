@@ -6,10 +6,12 @@ import dropDownIco from "@assets/dropdown-ico.svg";
 import searchLogo from "@assets/search.svg";
 import Card from "@components/Card";
 import coinsRequest from "@config/requests";
+import MarketStore from "@store/MarketStore";
 import axios from "axios";
+import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
 
-type fetchData = {
+export type fetchData = {
   id: string;
   name: string;
   image: string;
