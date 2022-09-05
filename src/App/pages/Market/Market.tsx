@@ -1,43 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import "./Market.scss";
 
 import dropDownIco from "@assets/dropdown-ico.svg";
 import searchLogo from "@assets/search.svg";
 import Card from "@components/Card";
-import coinsRequest from "@config/requests";
 import MarketStore from "@store/MarketStore";
-import axios from "axios";
+import { fetchData } from "@store/MarketStore/types";
+import { useLocalStore } from "@utils/useLocalStore";
 import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
 
-export type fetchData = {
-  id: string;
-  name: string;
-  image: string;
-  symbol: string;
-  current_price: string;
-};
-
 const Market = () => {
-  const [coins, setCoins] = useState<fetchData[]>([]);
+  const marketStore = useLocalStore(() => new MarketStore());
 
   useEffect(() => {
-    const requestCoins = async () => {
-      const result = await axios(coinsRequest);
+    marketStore.requestCoins();
+  }, [marketStore]);
 
-      setCoins(
-        result.data.map((raw: fetchData) => ({
-          id: raw.id,
-          name: raw.name,
-          image: raw.image,
-          symbol: raw.symbol,
-          current_price: raw.current_price,
-        }))
-      );
-    };
-    requestCoins();
-  }, []);
   return (
     <div className="wrapper-market">
       <section className="title">
@@ -84,7 +64,7 @@ const Market = () => {
       </nav>
       <section className="coins">
         <div className="coins__list">
-          {coins.map((coin: fetchData) => (
+          {marketStore.data.map((coin: fetchData) => (
             <Link to={`/coin/${coin.id}`}>
               <Card
                 key={coin.id}
@@ -100,4 +80,4 @@ const Market = () => {
   );
 };
 
-export default React.memo(Market);
+export default observer(Market);
