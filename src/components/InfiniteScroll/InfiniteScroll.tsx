@@ -18,18 +18,14 @@ const InfiniteScroll: React.FC<Props> = ({ onBottomHit, children }) => {
 
   useEffect(() => {
     if (initialLoad) {
-      onBottomHit();
-      // eslint-disable-next-line no-console
-      console.log("вызвана на маунте");
       setInitialLoad(false);
+      onBottomHit();
     }
   }, [onBottomHit, initialLoad]);
 
   useEffect(() => {
     const onScroll = () => {
       if (isBottom(contentRef)) {
-        // eslint-disable-next-line no-console
-        console.log("вызвана на дне");
         onBottomHit();
       }
     };

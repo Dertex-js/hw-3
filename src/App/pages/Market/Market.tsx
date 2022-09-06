@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import "./Market.scss";
 
@@ -15,15 +15,9 @@ import { Link } from "react-router-dom";
 const Market = () => {
   const marketStore = useLocalStore(() => new MarketStore());
 
-  const [page, setPage] = useState(0);
-
   const loadMoreCoins = () => {
-    setPage((page) => page + 1);
+    marketStore.requestCoins();
   };
-
-  useEffect(() => {
-    marketStore.requestCoins(page);
-  }, [marketStore, page]);
 
   return (
     <div className="wrapper-market">
