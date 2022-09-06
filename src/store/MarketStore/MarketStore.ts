@@ -1,32 +1,26 @@
 import coinsRequest from "@config/market_request";
 import { fetchData } from "@store/MarketStore/types";
 import axios from "axios";
-import { action, computed, makeObservable, observable } from "mobx";
-
-type PrivateFields = "_list";
+import { makeAutoObservable } from "mobx";
 
 export default class MarketStore {
   constructor() {
-    makeObservable<MarketStore, PrivateFields>(this, {
-      requestCoins: action,
-      _list: observable.ref,
-      data: computed,
-    });
+    makeAutoObservable(this);
   }
 
   private _list: fetchData[] = [];
 
   async requestCoins(page: number) {
-    this._list = [];
-    this._list = (await axios.get(coinsRequest.url(page))).data.map(
-      (raw: fetchData) => ({
-        id: raw.id,
-        name: raw.name,
-        image: raw.image,
-        symbol: raw.symbol,
-        current_price: raw.current_price,
-      })
-    );
+    const list: fetchData[] = (
+      await axios.get(coinsRequest.url(page))
+    ).data.map((raw: fetchData) => ({
+      id: raw.id,
+      name: raw.name,
+      image: raw.image,
+      symbol: raw.symbol,
+      current_price: raw.current_price,
+    }));
+    this._list = [...this._list, ...list];
   }
 
   get data() {

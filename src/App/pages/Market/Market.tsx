@@ -15,29 +15,15 @@ import { Link } from "react-router-dom";
 const Market = () => {
   const marketStore = useLocalStore(() => new MarketStore());
 
+  const [page, setPage] = useState(0);
+
+  const loadMoreCoins = () => {
+    setPage((page) => page + 1);
+  };
+
   useEffect(() => {
     marketStore.requestCoins(page);
-  }, [marketStore]);
-
-  const NUMBERS_PER_PAGE = 12;
-
-  const [numbers, setNumbers] = useState<number[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [page, setPage] = useState(1);
-
-  const hasMoreData = numbers.length < 1000;
-
-  const loadMoreNumbers = () => {
-    setPage((page) => page + 1);
-    setLoading(true);
-
-    const newNumbers = new Array(NUMBERS_PER_PAGE)
-      .fill(1)
-      .map((_, i) => page * NUMBERS_PER_PAGE + i);
-    setNumbers((nums) => [...nums, ...newNumbers]);
-
-    setLoading(false);
-  };
+  }, [marketStore, page]);
 
   return (
     <div className="wrapper-market">
@@ -86,19 +72,7 @@ const Market = () => {
         </ul>
       </nav>
       <section className="coins">
-        <div className="coins__list">
-          <InfiniteScroll
-            hasMoreData={hasMoreData}
-            isLoading={loading}
-            onBottomHit={loadMoreNumbers}
-            loadOnMount={true}
-          >
-            <ul>
-              {numbers.map((n) => (
-                <li key={n}>{n}</li>
-              ))}
-            </ul>
-          </InfiniteScroll>
+        <InfiniteScroll onBottomHit={loadMoreCoins}>
           {marketStore.data.map((coin: fetchData) => (
             <Link to={`/coin/${coin.id}`} key={coin.id}>
               <Card
@@ -109,7 +83,7 @@ const Market = () => {
               />
             </Link>
           ))}
-        </div>
+        </InfiniteScroll>
       </section>
     </div>
   );
