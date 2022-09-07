@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import Logo from "@assets/input-search.png";
 import Button from "@components/Button";
 import Card from "@components/Card";
+import { searchItemsModel } from "@store/models/search/searchItems";
 import SearchStore from "@store/SearchStore";
-import { fetchData } from "@store/SearchStore/types";
 import { useLocalStore } from "@utils/useLocalStore";
 import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
@@ -38,7 +38,7 @@ const Search = () => {
         </Link>
       </section>
       <section className="coins__list">
-        {searchStore.data.map((coin: fetchData) => (
+        {searchStore.data.map((coin: searchItemsModel) => (
           <Link to={`/coin/${coin.id}`} key={coin.id}>
             <Card
               key={coin.id}

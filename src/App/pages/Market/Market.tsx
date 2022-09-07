@@ -7,7 +7,7 @@ import searchLogo from "@assets/search.svg";
 import Card from "@components/Card";
 import InfiniteScroll from "@components/InfiniteScroll";
 import MarketStore from "@store/MarketStore";
-import { fetchData } from "@store/MarketStore/types";
+import { marketItemsModel } from "@store/models/market/marketItems";
 import { useLocalStore } from "@utils/useLocalStore";
 import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
@@ -67,7 +67,7 @@ const Market = () => {
       </nav>
       <section className="coins">
         <InfiniteScroll onBottomHit={loadMoreCoins}>
-          {marketStore.data.map((coin: fetchData) => (
+          {marketStore.data.map((coin: marketItemsModel) => (
             <Link to={`/coin/${coin.id}`} key={coin.id}>
               <Card
                 key={coin.id}

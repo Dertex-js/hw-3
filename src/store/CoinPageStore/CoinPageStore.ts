@@ -1,5 +1,5 @@
 import config from "@config/config";
-import { fetchData } from "@store/CoinPageStore/types";
+import { coinPageItemApi, coinPageItemModel } from "@store/models/coinPage";
 import axios from "axios";
 import { makeAutoObservable } from "mobx";
 
@@ -8,14 +8,17 @@ export default class CoinPageStore {
     makeAutoObservable(this);
   }
 
-  private _list: fetchData | null = null;
+  private _list: coinPageItemModel | null = null;
 
   async requestCoin(id: string | undefined) {
-    const result = await axios({
-      method: "get",
-      url: config.getOne(id),
-    });
-    this._list = result.data;
+    const response: coinPageItemApi = (
+      await axios({
+        method: "get",
+        url: config.getOne(id),
+      })
+    ).data;
+
+    this._list = response;
   }
 
   get data() {
