@@ -8,23 +8,33 @@ import rootStore from "@store/RootStore";
 import SearchStore from "@store/SearchStore";
 import { useLocalStore } from "@utils/useLocalStore";
 import { observer } from "mobx-react-lite";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import "./Search.scss";
 import * as Router from "react-router-dom";
 
 const Search = () => {
   const searchStore = useLocalStore(() => new SearchStore());
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchTerm = searchParams.get("query") || "";
+  const handleSearch = (e: any) => {
+    const query = e.target.value;
 
-  const { search } = Router.useLocation();
-  rootStore.query.setSearch(search);
-
-  const [value, setValue] = useState("");
-
-  useEffect(() => {
-    if (value) {
-      searchStore.requestCoins(value);
+    if (query) {
+      setSearchParams({ query });
+      searchStore.requestCoins(query);
+    } else {
+      setSearchParams({});
     }
-  }, [searchStore, value]);
+  };
+
+  // const { search } = Router.useLocation();
+  // rootStore.query.setSearch(search);
+  // const [value, setValue] = useState("");
+  // useEffect(() => {
+  //   if (value) {
+  //     searchStore.requestCoins(value);
+  //   }
+  // }, [searchStore, value]);
 
   return (
     <div className="wrapper-search">
@@ -35,8 +45,8 @@ const Search = () => {
             className="search-input__input"
             type="text"
             placeholder="Search Cryptocurrency"
-            onChange={(e) => setValue(e.target.value)}
-            value={value}
+            onChange={handleSearch}
+            value={searchTerm}
           />
         </div>
         <Link to={"/"} className="search__btn">
