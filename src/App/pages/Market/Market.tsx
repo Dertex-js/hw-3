@@ -29,7 +29,7 @@ const Market = () => {
           <p className="title__descr">In the past 24 hours</p>
         </div>
         <button className="title__search">
-          <Link to={"search"}>
+          <Link to={"/search"}>
             <img src={searchLogo} alt="search" />
           </Link>
         </button>

@@ -9,14 +9,18 @@ import {
   linearizeCollection,
   normalizeCollection,
 } from "@store/models/shared/collection";
+import rootStore from "@store/RootStore";
 import axios from "axios";
 import {
   action,
   computed,
+  IReactionDisposer,
   makeObservable,
   observable,
+  reaction,
   runInAction,
 } from "mobx";
+import * as qs from "qs";
 
 type PrivateFields = "_list";
 
@@ -32,7 +36,9 @@ export default class SearchStore {
   private _list: CollectionModel<string, searchItemsModel> =
     getInitialCollectionModel();
 
-  async requestCoins(value: string | undefined) {
+  async requestCoins(
+    value: undefined | string | string[] | qs.ParsedQs | qs.ParsedQs[]
+  ) {
     this._list = getInitialCollectionModel();
     const response: searchItemsModel[] = (
       await axios.get(coinsRequest.getOne(value))
@@ -51,5 +57,19 @@ export default class SearchStore {
     return linearizeCollection(this._list);
   }
 
-  destroy() {}
+  destroy() {
+    this._qrReaction();
+  }
+
+  private readonly _qrReaction: IReactionDisposer = reaction(
+    () => rootStore.query.getParam("query"),
+    (search) => {
+      // eslint-disable-next-line no-console
+      console.log(search);
+    }
+  );
+
+  get search() {
+    return this._qrReaction();
+  }
 }
