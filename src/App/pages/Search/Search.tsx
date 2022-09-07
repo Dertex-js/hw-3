@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import Logo from "@assets/input-search.png";
 import Button from "@components/Button";
 import Card from "@components/Card";
 import { searchItemsModel } from "@store/models/search/searchItems";
-import rootStore from "@store/RootStore";
 import SearchStore from "@store/SearchStore";
 import { useLocalStore } from "@utils/useLocalStore";
 import { observer } from "mobx-react-lite";
 import { Link, useSearchParams } from "react-router-dom";
 import "./Search.scss";
-import * as Router from "react-router-dom";
 
 const Search = () => {
   const searchStore = useLocalStore(() => new SearchStore());
@@ -26,15 +24,6 @@ const Search = () => {
       setSearchParams({});
     }
   };
-
-  // const { search } = Router.useLocation();
-  // rootStore.query.setSearch(search);
-  // const [value, setValue] = useState("");
-  // useEffect(() => {
-  //   if (value) {
-  //     searchStore.requestCoins(value);
-  //   }
-  // }, [searchStore, value]);
 
   return (
     <div className="wrapper-search">
