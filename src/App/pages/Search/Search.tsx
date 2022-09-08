@@ -14,7 +14,7 @@ const Search = () => {
   const searchStore = useLocalStore(() => new SearchStore());
   const [searchParams, setSearchParams] = useSearchParams();
   const searchTerm = searchParams.get("query") || "";
-  const handleSearch = (e: any) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
 
     if (query) {
