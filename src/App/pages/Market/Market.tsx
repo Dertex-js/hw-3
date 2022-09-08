@@ -1,41 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import "./Market.scss";
 
 import dropDownIco from "@assets/dropdown-ico.svg";
 import searchLogo from "@assets/search.svg";
 import Card from "@components/Card";
-import coinsRequest from "@config/requests";
-import axios from "axios";
+import InfiniteScroll from "@components/InfiniteScroll";
+import MarketStore from "@store/MarketStore";
+import { marketItemsModel } from "@store/models/market/marketItems";
+import { useLocalStore } from "@utils/useLocalStore";
+import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
 
-type fetchData = {
-  id: string;
-  name: string;
-  image: string;
-  symbol: string;
-  current_price: string;
-};
-
 const Market = () => {
-  const [coins, setCoins] = useState<fetchData[]>([]);
+  const marketStore = useLocalStore(() => new MarketStore());
 
-  useEffect(() => {
-    const requestCoins = async () => {
-      const result = await axios(coinsRequest);
+  const loadMoreCoins = () => {
+    marketStore.requestCoins();
+  };
 
-      setCoins(
-        result.data.map((raw: fetchData) => ({
-          id: raw.id,
-          name: raw.name,
-          image: raw.image,
-          symbol: raw.symbol,
-          current_price: raw.current_price,
-        }))
-      );
-    };
-    requestCoins();
-  }, []);
   return (
     <div className="wrapper-market">
       <section className="title">
@@ -46,7 +29,9 @@ const Market = () => {
           <p className="title__descr">In the past 24 hours</p>
         </div>
         <button className="title__search">
-          <img src={searchLogo} alt="search" />
+          <Link to={"/search"}>
+            <img src={searchLogo} alt="search" />
+          </Link>
         </button>
       </section>
       <section className="filter">
@@ -81,9 +66,9 @@ const Market = () => {
         </ul>
       </nav>
       <section className="coins">
-        <div className="coins__list">
-          {coins.map((coin: fetchData) => (
-            <Link to={`/coin/${coin.id}`}>
+        <InfiniteScroll onBottomHit={loadMoreCoins}>
+          {marketStore.data.map((coin: marketItemsModel) => (
+            <Link to={`/coin/${coin.id}`} key={coin.id}>
               <Card
                 key={coin.id}
                 image={coin.image}
@@ -92,10 +77,10 @@ const Market = () => {
               />
             </Link>
           ))}
-        </div>
+        </InfiniteScroll>
       </section>
     </div>
   );
 };
 
-export default React.memo(Market);
+export default observer(Market);
